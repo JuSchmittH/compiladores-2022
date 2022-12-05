@@ -1,7 +1,6 @@
 cara
 inte
 real
-
 se
 entaum
 senaum
@@ -9,37 +8,17 @@ enquanto
 entrada
 escreva
 retorne
-//ok
-
 <=
 >=
 ==
 !=
-
-test1
-test_test1
-
-889
-889.98889
-'e'
+//comment
+1233
+123.455
+'a'
+'_'
 '-'
-'M'
-'-'
-
-"test opaopaophfeu" "dhuehduqhuedqhidehi dijqwdiw dnwidqi"
-"test \"op\"aopaophfeu"
-0
-0
-2
-3
-56
-80
-65
-
-///teste de com
-entario
-fjgjhhgj\\\
-
-t23_dn.f
-        
-    ,
+'Z'
+///
+teste\\\
+funcao.js
