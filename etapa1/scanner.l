@@ -48,7 +48,6 @@ retorne             return KW_RETORNE;
 
 %%
 
-#include "hash.c"
 #include "main.c"
 
 int yywrap() {

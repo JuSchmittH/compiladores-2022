@@ -1973,7 +1973,6 @@ void yyfree (void * ptr )
 #line 49 "scanner.l"
 
 
-#include "hash.c"
 #include "main.c"
 
 int yywrap() {
