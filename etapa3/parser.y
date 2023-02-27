@@ -1,5 +1,4 @@
 %{
-    #include "hash.h"
     int yyerror();
 %}
 
@@ -26,12 +25,12 @@
 %token OPERATOR_EQ       
 %token OPERATOR_DIF      
 
-%token TK_IDENTIFIER     
+%token<symbol> TK_IDENTIFIER     
 
-%token LIT_INTEIRO       
-%token LIT_FLOAT         
-%token LIT_CHAR          
-%token LIT_STRING   
+%token<symbol> LIT_INTEIRO       
+%token<symbol> LIT_FLOAT         
+%token<symbol> LIT_CHAR          
+%token<symbol> LIT_STRING   
 
 %token TOKEN_ERROR
 
@@ -120,7 +119,7 @@ param: expr
 retornecmd: KW_RETORNE expr
     ;
 
-expr: TK_IDENTIFIER 
+expr: TK_IDENTIFIER                         { fprintf(stderr, "Expr %s\n", $1->text); }
     | TK_IDENTIFIER '[' expr ']' 
     | literal
     | expr '+' expr 
@@ -141,7 +140,7 @@ expr: TK_IDENTIFIER
     | KW_ENTRADA
 	  ;
 
-literal: LIT_INTEIRO
+literal: LIT_INTEIRO                        { fprintf(stderr, "Recebi %s\n", $1->text); }
     | LIT_FLOAT
     | LIT_CHAR
     ;
