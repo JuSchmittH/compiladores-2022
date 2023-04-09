@@ -1,0 +1,39 @@
+cara c = c ;
+cara d = 100 ;
+inte a.5 = a.5 ;
+inte i = 1 ;
+inte  v[10 ]10 0 0 0 0 0 0 0 0 0 ;
+inte  matrix[100 ];
+real f = f ;
+inte  main () {
+  a.5 =0 ;
+  a =a  - i ;
+  a =5 ;
+ v[a ] =55 ;
+escreva v[ 5 ] ;
+escreva a ;
+  i =2 ;
+escreva  2;
+  a =entrada ;
+escreva  a;
+{
+  i =incn(i1 entrada )entrada ;
+  a =incn(aa entrada )entrada ;
+}
+enquanto ( i  < 10  );
+escreva  10;
+entaum {
+  a =a  + 1 ;
+escreva  1;
+}
+se ( a  == 15  );
+entaum {
+escreva  15}
+senaum escreva  15 se ( i  == 100  ) ;
+{
+{
+}
+}
+}
+inte  incn (inte   x inte   n ) {
+retorne x  + n }

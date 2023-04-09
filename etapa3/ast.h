@@ -38,15 +38,17 @@
 #define AST_PARAMIDENT 29
 #define AST_BLOCO 30
 #define AST_LCMD 31
-#define AST_ATT 32
-#define AST_ATTVET 33
-#define AST_SE 34
-#define AST_SENAUM 35
-#define AST_ENQUANTO 36
-#define AST_ESCREVA 37
-#define AST_ESCREVAPARAMS 38
-#define AST_PARAMS 39
-#define AST_RETORNE 40
+#define AST_TAIL 32
+#define AST_ATT 33
+#define AST_ATTVET 34
+#define AST_SE 35
+#define AST_SENAUM 36
+#define AST_ENQUANTO 37
+#define AST_ESCREVA 38
+#define AST_ESCREVAPARAMS 39
+#define AST_ESCREVAPARAM 40
+#define AST_ESCREVAVEC 41
+#define AST_RETORNE 42
 
 typedef struct astnode {
     int type;

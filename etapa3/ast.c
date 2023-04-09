@@ -6,14 +6,13 @@
 #include "ast.h"
 
 AST *astCreate(int type, HASH_NODE *symbol, AST* s0, AST* s1, AST* s2, AST* s3) {
-    AST *newnode = calloc(1, sizeof(AST));
+    AST* newnode = (AST*) calloc(1, sizeof(AST));
     newnode->type = type;
     newnode->symbol = symbol;
     newnode->son[0] = s0;
     newnode->son[1] = s1;
     newnode->son[2] = s2;
     newnode->son[3] = s3;
-
     return newnode;
 }
 
@@ -56,6 +55,7 @@ void astPrint(AST *node, int level) {
         case AST_PARAMIDENT: fprintf(stderr, "AST_PARAMIDENT"); break;
         case AST_BLOCO: fprintf(stderr, "AST_BLOCO"); break;
         case AST_LCMD: fprintf(stderr, "AST_LCMD"); break;
+        case AST_TAIL: fprintf(stderr, "AST_TAIL"); break;
         case AST_ATT: fprintf(stderr, "AST_ATT"); break;
         case AST_ATTVET: fprintf(stderr, "AST_ATTVET"); break;
         case AST_SE: fprintf(stderr, "AST_SE"); break;
@@ -63,15 +63,17 @@ void astPrint(AST *node, int level) {
         case AST_ENQUANTO: fprintf(stderr, "AST_ENQUANTO"); break;
         case AST_ESCREVA: fprintf(stderr, "AST_ESCREVA"); break;
         case AST_ESCREVAPARAMS: fprintf(stderr, "AST_ESCREVAPARAMS"); break;
-        case AST_PARAMS: fprintf(stderr, "AST_PARAMS"); break;
+        case AST_ESCREVAPARAM: fprintf(stderr, "AST_ESCREVAPARAM"); break;
+        case AST_ESCREVAVEC: fprintf(stderr, "AST_ESCREVAVEC"); break;
         case AST_RETORNE: fprintf(stderr, "AST_RETORNE"); break;
         default: fprintf(stderr, "AST_UNKNOWN"); break;
     }
 
-    if(node->symbol != 0)
+    if(node->symbol != 0){
         fprintf(stderr, ", %s\n", node->symbol->text);
-    else
+    } else {
         fprintf(stderr, ", 0\n");
+    }
 
     for(int i=0; i<MAX_SONS; i++) {
         astPrint(node->son[i], level + 1);
