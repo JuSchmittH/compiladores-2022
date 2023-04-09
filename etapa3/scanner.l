@@ -5,11 +5,13 @@
 	#define SYMBOL_LIT_STRING 4
 	#define SYMBOL_IDENTIFIER 5
 
-  #include "hash.h"
-  #include "y.tab.h"
+  #include "ast.h"
+  #include "parser.tab.h"
+  
   int running = 1;
   int lineNumber = 1;
-  int getLineNumber(void);
+
+  void initMe();
 %}
 
 %x COMMENT
@@ -54,9 +56,6 @@ retorne             return KW_RETORNE;
 <COMMENT>.
 
 %%
-
-#include "y.tab.c"
-#include "main.c"
 
 int yywrap() {
   running = 0;

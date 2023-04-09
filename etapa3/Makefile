@@ -7,12 +7,29 @@
 # and #include "main.c" in the last part of the scanner.l
 #
 
-etapa3: y.tab.c lex.yy.c
-	gcc -o etapa3 lex.yy.c hash.c
-y.tab.c: parser.y 
-	yacc -d parser.y
+etapa3: parser.tab.o main.o lex.yy.o hash.o ast.o
+	gcc main.o lex.yy.o parser.tab.o hash.o ast.o -o etapa3
+
+main.o: main.c
+	gcc -c main.c
+
+hash.o: hash.c
+	gcc -c hash.c
+
+ast.o: ast.c
+	gcc -c ast.c
+
+parser.tab.o: parser.tab.c
+	gcc -c parser.tab.c
+
+lex.yy.o: lex.yy.c
+	gcc -c lex.yy.c
+
+parser.tab.c: parser.y 
+	bison -d parser.y
+
 lex.yy.c: scanner.l
-	lex scanner.l
+	flex scanner.l
 
 clean:
-	rm lex.yy.c y.tab.c y.tab.h etapa3
+	rm lex.yy.c parser.tab.c parser.tab.h *.o etapa3
