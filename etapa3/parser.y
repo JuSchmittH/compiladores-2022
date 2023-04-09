@@ -136,13 +136,13 @@ fluxocmd: KW_ENTAUM cmd KW_SE '(' expr ')'           { $$ = astCreate(AST_SE, 0,
 escrevacmd: KW_ESCREVA escrevaparams                 { $$ = astCreate(AST_ESCREVA, 0, $2, 0, 0, 0);}
     ;
 
-escrevaparams: expr escrevaparam              { $$ = astCreate(AST_ESCREVAPARAMS, 0, $1, $2, 0, 0);}
-    | LIT_STRING escrevaparam                        { $$ = astCreate(AST_ESCREVAVEC, $1, $2, 0, 0, 0);printf("%s\n",$1->text);}
-	;
+escrevaparams: escrevaparam                          { $$ = $1}
+    | escrevaparam escrevaparams                     { $$ = astCreate(AST_ESCREVAPARAMS, 0, $1, $2, 0, 0);}
+    |                                                { $$ = 0; }
+    ;
 
-escrevaparam: expr escrevaparam         { $$ = astCreate(AST_ESCREVAPARAM, 0, $1, $2, 0, 0);}
-    | LIT_STRING escrevaparam                    { $$ = astCreate(AST_ESCREVAVEC, $1, $2, 0, 0, 0);}
-    |                                               { $$ = 0; }
+escrevaparam: expr                                   { $$ = $1}
+    | LIT_STRING                                     { $$ = astCreate(AST_SYMBOL, $1, 0, 0, 0, 0); }
     ;
 
 retornecmd: KW_RETORNE expr                          { $$ = astCreate(AST_RETORNE, 0, $2, 0, 0, 0); }
@@ -167,9 +167,9 @@ expr: TK_IDENTIFIER                                  { $$ = astCreate(AST_SYMBOL
     | '(' expr ')'                                   { $$ = astCreate(AST_PARENTESIS, 0, $2, 0, 0, 0); }
     | TK_IDENTIFIER expr                             { $$ = astCreate(AST_IDENT, $1, $2, 0, 0, 0); } 
     | KW_ENTRADA                                     { $$ = astCreate(AST_ENTRADA, 0, 0, 0, 0, 0); }
-	;
+	  ;
 
-literal: LIT_INTEIRO                                 { $$ = astCreate(AST_SYMBOL, $1, 0, 0, 0, 0); printf("%s\n",$1->text); } 
+literal: LIT_INTEIRO                                 { $$ = astCreate(AST_SYMBOL, $1, 0, 0, 0, 0); } 
     | LIT_FLOAT                                      { $$ = astCreate(AST_SYMBOL, $1, 0, 0, 0, 0); } 
     | LIT_CHAR                                       { $$ = astCreate(AST_SYMBOL, $1, 0, 0, 0, 0); } 
     ;

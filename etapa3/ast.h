@@ -46,9 +46,7 @@
 #define AST_ENQUANTO 37
 #define AST_ESCREVA 38
 #define AST_ESCREVAPARAMS 39
-#define AST_ESCREVAPARAM 40
-#define AST_ESCREVAVEC 41
-#define AST_RETORNE 42
+#define AST_RETORNE 40
 
 typedef struct astnode {
     int type;

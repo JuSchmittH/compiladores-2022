@@ -63,8 +63,6 @@ void astPrint(AST *node, int level) {
         case AST_ENQUANTO: fprintf(stderr, "AST_ENQUANTO"); break;
         case AST_ESCREVA: fprintf(stderr, "AST_ESCREVA"); break;
         case AST_ESCREVAPARAMS: fprintf(stderr, "AST_ESCREVAPARAMS"); break;
-        case AST_ESCREVAPARAM: fprintf(stderr, "AST_ESCREVAPARAM"); break;
-        case AST_ESCREVAVEC: fprintf(stderr, "AST_ESCREVAVEC"); break;
         case AST_RETORNE: fprintf(stderr, "AST_RETORNE"); break;
         default: fprintf(stderr, "AST_UNKNOWN"); break;
     }

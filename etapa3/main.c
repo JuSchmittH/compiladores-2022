@@ -56,8 +56,6 @@ void decompile(AST *ast) {
 
   if(ast){
 
-  //printf("ast type: %d\n", ast->type);
-
     switch(ast->type) {
       case AST_SYMBOL:
         fprintf(output, "%s ", ast->symbol->text);
@@ -134,6 +132,7 @@ void decompile(AST *ast) {
       case AST_IDENT:
         fprintf(output, "%s", ast->symbol->text);
         decompile(ast->son[0]);
+        break;
       case AST_ENTRADA:
         fprintf(output, "entrada ");
         break;
@@ -244,14 +243,6 @@ void decompile(AST *ast) {
         break;
       case AST_ESCREVAPARAMS:
         decompile(ast->son[0]);
-        decompile(ast->son[1]);
-        break;
-      case AST_ESCREVAPARAM:
-        decompile(ast->son[0]);
-        decompile(ast->son[1]);
-        break;
-      case AST_ESCREVAVEC:
-        fprintf(output, " %s", ast->symbol->text);
         decompile(ast->son[1]);
         break;
       case AST_RETORNE:

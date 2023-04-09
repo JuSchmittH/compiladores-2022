@@ -6,7 +6,7 @@
 	#define SYMBOL_IDENTIFIER 5
 
   #include "ast.h"
-  #include "parser.tab.h"
+  #include "y.tab.h"
   
   int running = 1;
   int lineNumber = 1;
@@ -39,9 +39,9 @@ retorne             return KW_RETORNE;
 
 [a-z._]+[a-z0-9._]* { yylval.symbol = hashInsert(yytext, SYMBOL_IDENTIFIER); return TK_IDENTIFIER; }
 [0-9]*              { yylval.symbol = hashInsert(yytext, SYMBOL_LIT_INTE); return LIT_INTEIRO; }
-[0-9]*\.[0-9]*      hashInsert(yytext, SYMBOL_LIT_REAL); return LIT_FLOAT;
-\'.\'               hashInsert(yytext, SYMBOL_LIT_CARA); return LIT_CHAR;
-\"(\\.|[^"])*\"     hashInsert(yytext, SYMBOL_LIT_STRING); return LIT_STRING;
+[0-9]*\.[0-9]*      { yylval.symbol = hashInsert(yytext, SYMBOL_LIT_REAL); return LIT_FLOAT; }
+\'.\'               { yylval.symbol = hashInsert(yytext, SYMBOL_LIT_CARA); return LIT_CHAR; }
+\"(\\.|[^"])*\"     { yylval.symbol = hashInsert(yytext, SYMBOL_LIT_STRING); return LIT_STRING; }
 
 " "
 ","
